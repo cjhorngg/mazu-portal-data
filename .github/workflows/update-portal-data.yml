@@ -28,21 +28,26 @@ jobs:
             -H "apikey: $SUPABASE_ANON_KEY" \
             -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
             -o public_info.json
-          
+
           curl -s "$SUPABASE_URL/rest/v1/events?select=*&active=eq.true&order=date" \
             -H "apikey: $SUPABASE_ANON_KEY" \
             -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
             -o events.json
-          
+
           curl -s "$SUPABASE_URL/rest/v1/announcements?select=*&active=eq.true&order=priority" \
             -H "apikey: $SUPABASE_ANON_KEY" \
             -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
             -o announcements.json
-          
+
           curl -s "$SUPABASE_URL/rest/v1/quick_links?select=*&active=eq.true&order=sort_order" \
             -H "apikey: $SUPABASE_ANON_KEY" \
             -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
             -o quick_links.json
+
+          curl -s "$SUPABASE_URL/rest/v1/drivers?select=*&active=eq.true&order=sort_order" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            -o drivers.json
 
       - name: Merge into portal-data.json
         run: |
@@ -52,14 +57,16 @@ jobs:
           const events = JSON.parse(fs.readFileSync('events.json', 'utf8'));
           const announcements = JSON.parse(fs.readFileSync('announcements.json', 'utf8'));
           const quickLinks = JSON.parse(fs.readFileSync('quick_links.json', 'utf8'));
-          
+          const drivers = JSON.parse(fs.readFileSync('drivers.json', 'utf8'));
+
           const data = {
             announcement: publicInfo.find(i => i.section === 'main_announcement') || null,
             events: events || [],
             announcements: announcements || [],
-            quickLinks: quickLinks || []
+            quickLinks: quickLinks || [],
+            drivers: drivers || []
           };
-          
+
           fs.writeFileSync('portal-data.json', JSON.stringify(data, null, 2));
           "
 
@@ -76,4 +83,4 @@ jobs:
           fi
 
       - name: Cleanup temp files
-        run: rm -f public_info.json events.json announcements.json quick_links.json
+        run: rm -f public_info.json events.json announcements.json quick_links.json drivers.json
