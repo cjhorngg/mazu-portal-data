@@ -3,11 +3,7 @@ name: Update Vehicles Data
 on:
   repository_dispatch:
     types: [vehicles-change]
-  workflow_dispatch:
-  schedule:
-    # 每分钟跑一次（GitHub 最短 cron 就是每分钟）
-    # 注意：GitHub 官方说明 cron 可能有延迟，实际运行间隔可能是 1-5 分钟
-    - cron: '* * * * *'
+  workflow_dispatch:   # 保留手動觸發，方便首次產生 vehicles.json
 
 jobs:
   update-vehicles:
