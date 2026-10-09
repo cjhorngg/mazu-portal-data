@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-10-09T14:01:25.877Z",
+  "updatedAt": "2026-10-09T15:31:39.818Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李文仁",
       "mobile": "0955888999",
-      "fixTime": "2026-10-02T19:28:19+00:00",
-      "latitude": 22.6305983554479,
-      "longitude": 120.322148323433,
+      "fixTime": "2026-10-09T23:31:30+00:00",
+      "latitude": 24.9438173,
+      "longitude": 121.3738991,
       "coordinateSystem": "wgs84",
-      "address": "高雄市苓雅區河北路223號號"
+      "address": "新北市三峽區國際二街7號號"
     },
     {
       "carPlate": "媽祖",
