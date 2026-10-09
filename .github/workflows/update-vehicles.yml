@@ -1,0 +1,67 @@
+name: Update Vehicles Data
+
+on:
+  repository_dispatch:
+    types: [vehicles-change]
+  workflow_dispatch:
+  schedule:
+    # 每分钟跑一次（GitHub 最短 cron 就是每分钟）
+    # 注意：GitHub 官方说明 cron 可能有延迟，实际运行间隔可能是 1-5 分钟
+    - cron: '* * * * *'
+
+jobs:
+  update-vehicles:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch vehicles from Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          curl -s "$SUPABASE_URL/rest/v1/vehicles?select=*&order=carplate" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            -o vehicles-raw.json
+
+      - name: Transform to frontend shape
+        run: |
+          node -e "
+          const fs = require('fs');
+          const raw = JSON.parse(fs.readFileSync('vehicles-raw.json', 'utf8'));
+          const transformed = raw.map(v => ({
+            carPlate: v.carplate,
+            name: v.name,
+            mobile: v.mobile,
+            fixTime: v.fixtime,
+            latitude: v.latitude,
+            longitude: v.longitude,
+            coordinateSystem: v.coordinatesystem || 'wgs84',
+            address: v.address
+          }));
+          fs.writeFileSync('vehicles.json', JSON.stringify({
+            updatedAt: new Date().toISOString(),
+            count: transformed.length,
+            data: transformed
+          }, null, 2));
+          "
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add vehicles.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update vehicles data"
+            git push
+          fi
+
+      - name: Cleanup
+        run: rm -f vehicles-raw.json
