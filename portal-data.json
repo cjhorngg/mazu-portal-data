@@ -1,0 +1,83 @@
+{
+  "announcement": {
+    "id": 1,
+    "section": "main_announcement",
+    "content": "VIP 行李託運早鳥報名，開始了!",
+    "last_updated": "2026-03-10T00:00:00+00:00",
+    "active": true,
+    "created_at": "2026-02-27T01:51:41.973375+00:00"
+  },
+  "events": [
+    {
+      "id": 1,
+      "title": "行李託運報名",
+      "date": "2026-03-11",
+      "time": "09:00 - 17:00",
+      "location": "拱天宮文物大樓",
+      "description": "\n 行李託運報名",
+      "active": true,
+      "created_at": "2026-02-27T01:51:41.973375+00:00",
+      "updated_at": "2026-02-28T02:12:35.685+00:00",
+      "map_url": "https://www.google.com/maps/place/%E7%99%BD%E6%B2%99%E5%B1%AF%E6%8B%B1%E5%A4%A9%E5%AE%AE%E9%A4%90%E5%BB%B3%E6%96%87%E7%89%A9%E5%A4%A7%E6%A8%93/@24.5716035,120.7086355,18z/data=!3m1!4b1!4m6!3m5!1s0x3469a61d21b05e15:0xbb2e5f793147d74f!8m2!3d24.5716035!4d120.7086355!16s%2Fg%2F11bttgkqbp?authuser=0&entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "id": 2,
+      "title": "行李託運報到",
+      "date": "2026-04-12",
+      "time": "19:00 - 22:00",
+      "location": "拱天宮第三停車場",
+      "description": "北港進香行李報到",
+      "active": true,
+      "created_at": "2026-02-27T01:51:41.973375+00:00",
+      "updated_at": "2026-02-28T07:43:11.106+00:00",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=24.5730145,120.7113353"
+    }
+  ],
+  "announcements": [
+    {
+      "id": 3,
+      "message": "📞 小藍帽每日12:00~14:00上線服務, 請留意關注!",
+      "priority": "low",
+      "expires": "2026-05-01",
+      "active": true,
+      "created_at": "2026-02-27T01:51:41.973375+00:00"
+    },
+    {
+      "id": 1,
+      "message": "📢 4/6 ~ 開放報名狀態查詢，請點擊連結查詢",
+      "priority": "medium",
+      "expires": "2026-05-01",
+      "active": true,
+      "created_at": "2026-02-27T01:51:41.973375+00:00"
+    }
+  ],
+  "quickLinks": [
+    {
+      "id": 1,
+      "label": "Flyer's",
+      "url": "https://line.me/R/ti/p/@602mbstj",
+      "icon": "fab fa-line",
+      "active": true,
+      "sort_order": 1,
+      "created_at": "2026-02-27T01:51:41.973375+00:00"
+    },
+    {
+      "id": 2,
+      "label": "小藍帽",
+      "url": "https://love-mazu.netlify.app/web-call-center.html",
+      "icon": "fas fa-phone",
+      "active": true,
+      "sort_order": 2,
+      "created_at": "2026-02-27T01:51:41.973375+00:00"
+    },
+    {
+      "id": 3,
+      "label": "行事曆",
+      "url": "https://calendar.google.com",
+      "icon": "far fa-calendar",
+      "active": true,
+      "sort_order": 3,
+      "created_at": "2026-02-27T01:51:41.973375+00:00"
+    }
+  ]
+}
