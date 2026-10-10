@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-10-10T03:34:48.441Z",
+  "updatedAt": "2026-10-10T03:59:34.382Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李大大",
       "mobile": "0955888999",
-      "fixTime": "2026-10-10T11:34:40+00:00",
-      "latitude": 24.8778704975904,
-      "longitude": 121.291724276375,
+      "fixTime": "2026-10-10T11:59:26+00:00",
+      "latitude": 24.9447768,
+      "longitude": 121.3781549,
       "coordinateSystem": "wgs84",
-      "address": "桃園市大溪區復興路148巷15號號"
+      "address": "新北市三峽區學成路321號號"
     },
     {
       "carPlate": "媽祖",
