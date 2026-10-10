@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-10-10T02:10:15.236Z",
+  "updatedAt": "2026-10-10T02:33:10.981Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李中央",
       "mobile": "0955888999",
-      "fixTime": "2026-10-09T23:31:30+00:00",
-      "latitude": 24.9438173,
-      "longitude": 121.3738991,
+      "fixTime": "2026-10-10T10:33:03+00:00",
+      "latitude": 24.9453587055601,
+      "longitude": 121.390600203673,
       "coordinateSystem": "wgs84",
       "address": "新北市三峽區國際二街7號號"
     },
