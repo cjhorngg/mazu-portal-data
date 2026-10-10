@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-10-10T06:35:50.740Z",
+  "updatedAt": "2026-10-10T06:39:31.163Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李大大",
       "mobile": "0955888999",
-      "fixTime": "2026-10-10T14:35:38+00:00",
-      "latitude": 24.9435973,
-      "longitude": 121.3738341,
+      "fixTime": "2026-10-10T14:39:23+00:00",
+      "latitude": 24.9597719823093,
+      "longitude": 121.431306836541,
       "coordinateSystem": "wgs84",
-      "address": "新北市三峽區"
+      "address": "新北市土城區土城交流道"
     },
     {
       "carPlate": "媽祖",
