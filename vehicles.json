@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-10-10T03:59:34.382Z",
+  "updatedAt": "2026-10-10T06:35:50.740Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李大大",
       "mobile": "0955888999",
-      "fixTime": "2026-10-10T11:59:26+00:00",
-      "latitude": 24.9447768,
-      "longitude": 121.3781549,
+      "fixTime": "2026-10-10T14:35:38+00:00",
+      "latitude": 24.9435973,
+      "longitude": 121.3738341,
       "coordinateSystem": "wgs84",
-      "address": "新北市三峽區學成路321號號"
+      "address": "新北市三峽區"
     },
     {
       "carPlate": "媽祖",
