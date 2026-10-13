@@ -2,17 +2,37 @@ name: Keep Supabase Active
 
 on:
   schedule:
-    # Runs every Monday at 8:00 AM UTC
+    # Runs every Monday at 08:00 UTC (16:00 Taiwan time)
     - cron: '0 8 * * 1'
-  # Allows you to run this workflow manually from the Actions tab
+  # Allow manual trigger from Actions tab
   workflow_dispatch:
 
 jobs:
-  ping:
+  keepalive:
     runs-on: ubuntu-latest
     steps:
       - name: Ping Supabase REST API
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          # Replace with your actual Project URL
-          curl -X GET "https://otdznmdcznqcijxnerei.supabase.co/rest/v1/" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}"
+          echo "🔔 Pinging Supabase..."
+          echo "URL: $SUPABASE_URL"
+
+          HTTP_CODE=$(curl -s -o /tmp/supabase_response.txt -w "%{http_code}" \
+            -X GET "$SUPABASE_URL/rest/v1/" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY")
+
+          echo "HTTP status: $HTTP_CODE"
+          echo "Response:"
+          cat /tmp/supabase_response.txt || true
+
+          # Any 2xx or 4xx response means the project is reachable (not paused).
+          # Only fail on connection errors or 5xx.
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 500 ]; then
+            echo "✅ Supabase is active (HTTP $HTTP_CODE)"
+          else
+            echo "❌ Supabase ping failed (HTTP $HTTP_CODE)"
+            exit 1
+          fi
