@@ -2,7 +2,11 @@ name: Keep Supabase Active
 
 on:
   schedule:
+    # Monday 08:00 UTC (16:00 Taiwan time)
     - cron: '0 8 * * 1'
+    # Thursday 08:00 UTC (16:00 Taiwan time)
+    - cron: '0 8 * * 4'
+  # Allow manual trigger from Actions tab
   workflow_dispatch:
 
 jobs:
@@ -16,7 +20,6 @@ jobs:
         run: |
           echo "🔔 Pinging Supabase..."
 
-          # Hit an actual table to trigger real database activity
           HTTP_CODE=$(curl -s -o /tmp/resp.txt -w "%{http_code}" \
             -X GET "$SUPABASE_URL/rest/v1/vehicles?select=id&limit=1" \
             -H "apikey: $SUPABASE_ANON_KEY" \
