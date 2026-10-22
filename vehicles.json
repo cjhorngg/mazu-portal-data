@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20T08:59:06.356Z",
+  "updatedAt": "2026-10-22T03:34:49.590Z",
   "count": 8,
   "data": [
     {
@@ -76,11 +76,11 @@
       "carPlate": "頭旗",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-09-22T20:48:32+00:00",
-      "latitude": 25.05181,
-      "longitude": 121.288253,
+      "fixTime": "2026-10-22T11:34:41+00:00",
+      "latitude": 24.9437889,
+      "longitude": 121.3739153,
       "coordinateSystem": "wgs84",
-      "address": "338台灣桃園市蘆竹區錦中里南崁路一段106號"
+      "address": "新北市三峽區國際二街7號號"
     }
   ]
 }
