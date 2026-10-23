@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23T19:33:41.498Z",
+  "updatedAt": "2026-10-23T22:36:21.980Z",
   "count": 8,
   "data": [
     {
@@ -16,7 +16,7 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-24T03:33:26+00:00",
+      "fixTime": "2026-10-24T06:36:07+00:00",
       "latitude": 24.571413,
       "longitude": 120.709244,
       "coordinateSystem": "wgs84",
