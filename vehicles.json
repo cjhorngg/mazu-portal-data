@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T05:43:52.079Z",
+  "updatedAt": "2026-10-24T05:57:26.346Z",
   "count": 8,
   "data": [
     {
@@ -16,11 +16,11 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-24T13:43:36+00:00",
-      "latitude": 24.571413,
-      "longitude": 120.709244,
+      "fixTime": "2026-10-24T13:57:18+00:00",
+      "latitude": 24.9436704,
+      "longitude": 121.3738696,
       "coordinateSystem": "wgs84",
-      "address": "357台灣苗栗縣通霄鎮白東里拱天路8號"
+      "address": "237台灣新北市三峽區龍恩里國際二街5號"
     },
     {
       "carPlate": "拱天宮",
@@ -76,11 +76,11 @@
       "carPlate": "頭旗",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-15T03:20:19+00:00",
-      "latitude": 25.051593,
-      "longitude": 121.287416,
+      "fixTime": "2026-10-24T13:57:20+00:00",
+      "latitude": 24.9430412,
+      "longitude": 121.3741943,
       "coordinateSystem": "wgs84",
-      "address": "338台灣桃園市蘆竹區錦中里南崁路一段129號"
+      "address": "237台灣新北市三峽區龍恩里國際一街20號"
     }
   ]
 }
