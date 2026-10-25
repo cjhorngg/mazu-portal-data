@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T04:41:52.273Z",
+  "updatedAt": "2026-10-25T04:45:35.963Z",
   "count": 8,
   "data": [
     {
@@ -16,11 +16,11 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-25T00:18:10+00:00",
-      "latitude": 24.9434652,
-      "longitude": 121.3738264,
+      "fixTime": "2026-10-25T12:44:01+00:00",
+      "latitude": 24.9442077,
+      "longitude": 121.3736262,
       "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里國際一街20號"
+      "address": "237台灣新北市三峽區龍恩里鳶飛大道1號"
     },
     {
       "carPlate": "拱天宮",
@@ -76,7 +76,7 @@
       "carPlate": "頭旗",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-25T00:18:10+00:00",
+      "fixTime": "2026-10-25T12:44:01+00:00",
       "latitude": 24.9430412,
       "longitude": 121.3741943,
       "coordinateSystem": "wgs84",
