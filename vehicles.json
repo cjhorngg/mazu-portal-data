@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T17:56:15.839Z",
+  "updatedAt": "2026-10-26T12:36:08.174Z",
   "count": 8,
   "data": [
     {
@@ -16,11 +16,11 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-26T01:03:40+00:00",
-      "latitude": 24.9435461,
-      "longitude": 121.3740856,
+      "fixTime": "2026-10-26T20:35:59+00:00",
+      "latitude": 25.051593,
+      "longitude": 121.287416,
       "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里鳶飛大道1號"
+      "address": "No. 129號, Section 1, Nankan Rd, 錦中里蘆竹區桃園市台灣 338"
     },
     {
       "carPlate": "拱天宮",
