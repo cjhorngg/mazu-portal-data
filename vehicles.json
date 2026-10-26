@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-26T13:19:56.633Z",
+  "updatedAt": "2026-10-26T13:20:41.706Z",
   "count": 8,
   "data": [
     {
@@ -76,11 +76,11 @@
       "carPlate": "頭旗",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-25T12:44:01+00:00",
+      "fixTime": "2026-10-26T21:07:22+00:00",
       "latitude": 24.9430412,
       "longitude": 121.3741943,
       "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里國際一街20號"
+      "address": "No. 20, Guoji 1st St, 龍恩里三峽區新北市台灣 237"
     }
   ]
 }
