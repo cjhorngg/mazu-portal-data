@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-26T16:05:06.259Z",
+  "updatedAt": "2026-10-26T16:07:10.922Z",
   "count": 8,
   "data": [
     {
@@ -16,11 +16,11 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-27T00:04:49+00:00",
-      "latitude": 24.571413,
-      "longitude": 120.709244,
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9436405,
+      "longitude": 121.3740817,
       "coordinateSystem": "wgs84",
-      "address": "No. 8號, Gongtian Rd, 白東里通霄鎮苗栗縣台灣 357"
+      "address": "No. 143, Daxue Rd, 龍恩里三峽區新北市台灣 237"
     },
     {
       "carPlate": "拱天宮",
@@ -76,11 +76,11 @@
       "carPlate": "頭旗",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-15T03:20:19+00:00",
-      "latitude": 25.051593,
-      "longitude": 121.287416,
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9430412,
+      "longitude": 121.3741943,
       "coordinateSystem": "wgs84",
-      "address": "No. 129號, Section 1, Nankan Rd, 錦中里蘆竹區桃園市台灣 338"
+      "address": "No. 20, Guoji 1st St, 龍恩里三峽區新北市台灣 237"
     }
   ]
 }
