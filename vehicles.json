@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-27T22:05:17.830Z",
+  "updatedAt": "2026-10-27T22:14:59.820Z",
   "count": 8,
   "data": [
     {
@@ -16,11 +16,11 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-28T06:05:07+00:00",
+      "fixTime": "2026-10-28T06:14:49+00:00",
       "latitude": 25,
       "longitude": 121.5,
       "coordinateSystem": "wgs84",
-      "address": "測試地址"
+      "address": "測試"
     },
     {
       "carPlate": "拱天宮",
