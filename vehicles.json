@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-27T10:58:18.559Z",
-  "count": 33,
+  "updatedAt": "2026-10-27T10:59:29.296Z",
+  "count": 35,
   "data": [
     {
       "carPlate": "ZenLife",
@@ -26,41 +26,51 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-26T21:07:22+00:00",
-      "latitude": 24.9436405,
-      "longitude": 121.3740817,
-      "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里大學路143號"
-    },
-    {
-      "carPlate": "媽祖",
-      "name": "GPS",
-      "mobile": "0912345678",
-      "fixTime": "2026-10-26T21:07:22+00:00",
-      "latitude": 24.9436405,
-      "longitude": 121.3740817,
-      "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里大學路143號"
-    },
-    {
-      "carPlate": "媽祖",
-      "name": "GPS",
-      "mobile": "0912345678",
-      "fixTime": "2026-10-26T21:07:22+00:00",
-      "latitude": 24.9436405,
-      "longitude": 121.3740817,
-      "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里大學路143號"
-    },
-    {
-      "carPlate": "媽祖",
-      "name": "GPS",
-      "mobile": "0912345678",
       "fixTime": "2026-10-27T14:28:23+00:00",
       "latitude": 24.571413,
       "longitude": 120.709244,
       "coordinateSystem": "wgs84",
       "address": "357台灣苗栗縣通霄鎮白東里拱天路8號"
+    },
+    {
+      "carPlate": "媽祖",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9436405,
+      "longitude": 121.3740817,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里大學路143號"
+    },
+    {
+      "carPlate": "媽祖",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9436405,
+      "longitude": 121.3740817,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里大學路143號"
+    },
+    {
+      "carPlate": "媽祖",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9436405,
+      "longitude": 121.3740817,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里大學路143號"
+    },
+    {
+      "carPlate": "媽祖",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9436405,
+      "longitude": 121.3740817,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里大學路143號"
     },
     {
       "carPlate": "媽祖",
@@ -276,61 +286,71 @@
       "carPlate": "頭旗",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-26T21:07:22+00:00",
-      "latitude": 24.9430412,
-      "longitude": 121.3741943,
-      "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里國際一街20號"
-    },
-    {
-      "carPlate": "頭旗",
-      "name": "GPS",
-      "mobile": "0912345678",
-      "fixTime": "2026-10-26T21:07:22+00:00",
-      "latitude": 24.9430412,
-      "longitude": 121.3741943,
-      "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里國際一街20號"
-    },
-    {
-      "carPlate": "頭旗",
-      "name": "GPS",
-      "mobile": "0912345678",
-      "fixTime": "2026-10-26T21:07:22+00:00",
-      "latitude": 24.9430412,
-      "longitude": 121.3741943,
-      "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里國際一街20號"
-    },
-    {
-      "carPlate": "頭旗",
-      "name": "GPS",
-      "mobile": "0912345678",
-      "fixTime": "2026-10-26T21:07:22+00:00",
-      "latitude": 24.9430412,
-      "longitude": 121.3741943,
-      "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里國際一街20號"
-    },
-    {
-      "carPlate": "頭旗",
-      "name": "GPS",
-      "mobile": "0912345678",
-      "fixTime": "2026-10-26T21:07:22+00:00",
-      "latitude": 24.9430412,
-      "longitude": 121.3741943,
-      "coordinateSystem": "wgs84",
-      "address": "237台灣新北市三峽區龍恩里國際一街20號"
-    },
-    {
-      "carPlate": "頭旗",
-      "name": "GPS",
-      "mobile": "0912345678",
       "fixTime": "2026-10-15T03:20:19+00:00",
       "latitude": 25.051593,
       "longitude": 121.287416,
       "coordinateSystem": "wgs84",
       "address": "338台灣桃園市蘆竹區錦中里南崁路一段129號"
+    },
+    {
+      "carPlate": "頭旗",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9430412,
+      "longitude": 121.3741943,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里國際一街20號"
+    },
+    {
+      "carPlate": "頭旗",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9430412,
+      "longitude": 121.3741943,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里國際一街20號"
+    },
+    {
+      "carPlate": "頭旗",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9430412,
+      "longitude": 121.3741943,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里國際一街20號"
+    },
+    {
+      "carPlate": "頭旗",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9430412,
+      "longitude": 121.3741943,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里國際一街20號"
+    },
+    {
+      "carPlate": "頭旗",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9430412,
+      "longitude": 121.3741943,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里國際一街20號"
+    },
+    {
+      "carPlate": "頭旗",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-26T21:07:22+00:00",
+      "latitude": 24.9430412,
+      "longitude": 121.3741943,
+      "coordinateSystem": "wgs84",
+      "address": "237台灣新北市三峽區龍恩里國際一街20號"
     }
   ]
 }
