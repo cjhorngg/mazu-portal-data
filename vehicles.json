@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-27T21:55:10.653Z",
+  "updatedAt": "2026-10-27T22:05:17.830Z",
   "count": 8,
   "data": [
     {
@@ -16,11 +16,11 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-27T19:53:12+00:00",
-      "latitude": 25.051593,
-      "longitude": 121.287416,
+      "fixTime": "2026-10-28T06:05:07+00:00",
+      "latitude": 25,
+      "longitude": 121.5,
       "coordinateSystem": "wgs84",
-      "address": "338台灣桃園市蘆竹區錦中里南崁路一段129號"
+      "address": "測試地址"
     },
     {
       "carPlate": "拱天宮",
