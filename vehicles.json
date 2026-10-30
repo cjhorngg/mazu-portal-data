@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T04:26:52.372Z",
+  "updatedAt": "2026-10-30T12:30:28.085Z",
   "count": 8,
   "data": [
     {
@@ -16,11 +16,11 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-10-30T12:26:39+00:00",
-      "latitude": 24.571413,
-      "longitude": 120.709244,
+      "fixTime": "2026-10-30T20:30:18+00:00",
+      "latitude": 25.051593,
+      "longitude": 121.287416,
       "coordinateSystem": "wgs84",
-      "address": "357台灣苗栗縣通霄鎮白東里拱天路8號"
+      "address": "338台灣桃園市蘆竹區錦中里南崁路一段129號"
     },
     {
       "carPlate": "拱天宮",
