@@ -3,7 +3,12 @@ name: Update Vehicles Data
 on:
   repository_dispatch:
     types: [vehicles-change]
-  workflow_dispatch:   # 保留手動觸發，方便首次產生 vehicles.json
+  workflow_dispatch:
+
+# Prevent two runs of this workflow from racing each other
+concurrency:
+  group: update-vehicles-data
+  cancel-in-progress: false
 
 jobs:
   update-vehicles:
@@ -14,13 +19,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Fetch full history so rebase works cleanly
+          fetch-depth: 0
 
       - name: Fetch vehicles from Supabase
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          curl -s "$SUPABASE_URL/rest/v1/vehicles?select=*&order=carplate" \
+          curl -sS --fail "$SUPABASE_URL/rest/v1/vehicles?select=*&order=carplate" \
             -H "apikey: $SUPABASE_ANON_KEY" \
             -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
             -o vehicles-raw.json
@@ -54,10 +62,12 @@ jobs:
           git add vehicles.json
           if git diff --cached --quiet; then
             echo "No changes"
-          else
-            git commit -m "Update vehicles data"
-            git push
+            exit 0
           fi
+          git commit -m "Update vehicles data"
+          # Rebase onto remote main in case another push landed while we ran
+          git pull --rebase origin main
+          git push origin main
 
       - name: Cleanup
         run: rm -f vehicles-raw.json
