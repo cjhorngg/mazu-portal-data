@@ -8,7 +8,7 @@ on:
 # Prevent two runs of this workflow from racing each other
 concurrency:
   group: update-vehicles-data
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   update-vehicles:
