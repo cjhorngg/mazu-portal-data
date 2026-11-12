@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-11-12T16:05:53.724Z",
+  "updatedAt": "2026-11-12T16:24:27.863Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李大仁",
       "mobile": "0955888999",
-      "fixTime": "2026-11-12T15:11:18+00:00",
-      "latitude": 24.6998842443697,
-      "longitude": 120.86986541849,
+      "fixTime": "2026-11-12T16:24:15.359+00:00",
+      "latitude": 24.9434074,
+      "longitude": 121.3737726,
       "coordinateSystem": "wgs84",
       "address": "苗栗縣竹南鎮龍富街51號號"
     },
