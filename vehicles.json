@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-12T15:09:32.251Z",
+  "updatedAt": "2026-11-12T15:10:01.888Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李大仁",
       "mobile": "0955888999",
-      "fixTime": "2026-11-12T22:24:11+00:00",
-      "latitude": 24.593136917,
-      "longitude": 120.725154876047,
+      "fixTime": "2026-11-12T23:09:47+00:00",
+      "latitude": 24.6049686971972,
+      "longitude": 120.747453688457,
       "coordinateSystem": "wgs84",
-      "address": "苗栗縣後龍鎮"
+      "address": "苗栗縣後龍鎮西湖溪橋"
     },
     {
       "carPlate": "媽祖",
