@@ -1,5 +1,3 @@
-# old : update-vehicles.yml 
-
 name: Update Vehicles Data
 
 on:
