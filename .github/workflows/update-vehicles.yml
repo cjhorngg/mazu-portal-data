@@ -4,11 +4,16 @@ on:
   repository_dispatch:
     types: [vehicles-change]
   workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Why this publish was triggered'
+        required: false
+        default: 'manual'
 
-# Prevent two runs of this workflow from racing each other
+# Serialize; do NOT cancel in-progress. The last run should always win.
 concurrency:
   group: update-vehicles-data
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   update-vehicles:
@@ -20,7 +25,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # Fetch full history so rebase works cleanly
           fetch-depth: 0
 
       - name: Fetch vehicles from Supabase
@@ -38,21 +42,50 @@ jobs:
           node -e "
           const fs = require('fs');
           const raw = JSON.parse(fs.readFileSync('vehicles-raw.json', 'utf8'));
-          const transformed = raw.map(v => ({
-            carPlate: v.carplate,
-            name: v.name,
-            mobile: v.mobile,
-            fixTime: v.fixtime,
-            latitude: v.latitude,
+
+          raw.sort((a, b) => String(a.carplate).localeCompare(String(b.carplate)));
+
+          const drivers = raw.map(v => ({
+            carplate: String(v.carplate),
+            name:     String(v.name || ''),
+            mobile:   String(v.mobile || '')
+          }));
+
+          const positioned = raw.filter(v => v.latitude != null && v.longitude != null);
+          const data = positioned.map(v => ({
+            carPlate:  String(v.carplate),
+            name:      String(v.name || 'GPS'),
+            mobile:    String(v.mobile || ''),
+            fixTime:   v.fixtime || null,
+            latitude:  v.latitude,
             longitude: v.longitude,
             coordinateSystem: v.coordinatesystem || 'wgs84',
-            address: v.address
+            address:   v.address || ''
           }));
-          fs.writeFileSync('vehicles.json', JSON.stringify({
-            updatedAt: new Date().toISOString(),
-            count: transformed.length,
-            data: transformed
-          }, null, 2));
+
+          // Must stay in sync with PROTECTED_POSITION_PLATES in GAS Config.js.
+          const protectedPlates = ['媽祖', '頭旗'];
+
+          const previous = fs.existsSync('vehicles.json')
+            ? JSON.parse(fs.readFileSync('vehicles.json', 'utf8'))
+            : null;
+
+          const unchanged = previous
+            && JSON.stringify(previous.drivers)         === JSON.stringify(drivers)
+            && JSON.stringify(previous.data)            === JSON.stringify(data)
+            && JSON.stringify(previous.protectedPlates) === JSON.stringify(protectedPlates);
+
+          const out = {
+            updatedAt: unchanged ? previous.updatedAt : new Date().toISOString(),
+            count: data.length,
+            drivers: drivers,
+            data: data,
+            protectedPlates: protectedPlates
+          };
+
+          fs.writeFileSync('vehicles.json', JSON.stringify(out, null, 2) + '\n');
+          console.log(unchanged ? 'NO CONTENT CHANGE' : 'DATA CHANGED');
+          console.log('drivers:', drivers.length, 'positioned:', data.length);
           "
 
       - name: Commit and push
@@ -61,11 +94,10 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add vehicles.json
           if git diff --cached --quiet; then
-            echo "No changes"
+            echo "No changes — exiting without commit"
             exit 0
           fi
-          git commit -m "Update vehicles data"
-          # Rebase onto remote main in case another push landed while we ran
+          git commit -m "Update vehicles data [${{ github.event.inputs.reason || 'auto' }}]"
           git pull --rebase origin main
           git push origin main
 
