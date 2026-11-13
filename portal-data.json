@@ -3,9 +3,9 @@
     "id": 1,
     "section": "main_announcement",
     "content": "VIP 行李託運早鳥報名，開始了!",
-    "last_updated": "2026-03-10T00:00:00+00:00",
+    "last_updated": "2026-03-10T08:00:00+08:00",
     "active": true,
-    "created_at": "2026-02-27T01:51:41.973375+00:00"
+    "created_at": "2026-02-27T09:51:41.973375+08:00"
   },
   "events": [
     {
@@ -16,8 +16,8 @@
       "location": "拱天宮文物大樓",
       "description": "\n 行李託運報名",
       "active": true,
-      "created_at": "2026-02-27T01:51:41.973375+00:00",
-      "updated_at": "2026-02-28T02:12:35.685+00:00",
+      "created_at": "2026-02-27T09:51:41.973375+08:00",
+      "updated_at": "2026-02-28T10:12:35.685+08:00",
       "map_url": "https://www.google.com/maps/place/%E7%99%BD%E6%B2%99%E5%B1%AF%E6%8B%B1%E5%A4%A9%E5%AE%AE%E9%A4%90%E5%BB%B3%E6%96%87%E7%89%A9%E5%A4%A7%E6%A8%93/@24.5716035,120.7086355,18z/data=!3m1!4b1!4m6!3m5!1s0x3469a61d21b05e15:0xbb2e5f793147d74f!8m2!3d24.5716035!4d120.7086355!16s%2Fg%2F11bttgkqbp?authuser=0&entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
     },
     {
@@ -28,8 +28,8 @@
       "location": "拱天宮第三停車場",
       "description": "北港進香行李報到",
       "active": true,
-      "created_at": "2026-02-27T01:51:41.973375+00:00",
-      "updated_at": "2026-02-28T07:43:11.106+00:00",
+      "created_at": "2026-02-27T09:51:41.973375+08:00",
+      "updated_at": "2026-02-28T15:43:11.106+08:00",
       "map_url": "https://www.google.com/maps/search/?api=1&query=24.5730145,120.7113353"
     }
   ],
@@ -40,7 +40,7 @@
       "priority": "low",
       "expires": "2026-05-01",
       "active": true,
-      "created_at": "2026-02-27T01:51:41.973375+00:00"
+      "created_at": "2026-02-27T09:51:41.973375+08:00"
     },
     {
       "id": 1,
@@ -48,7 +48,7 @@
       "priority": "medium",
       "expires": "2026-05-01",
       "active": true,
-      "created_at": "2026-02-27T01:51:41.973375+00:00"
+      "created_at": "2026-02-27T09:51:41.973375+08:00"
     }
   ],
   "quickLinks": [
@@ -59,7 +59,7 @@
       "icon": "fab fa-line",
       "active": true,
       "sort_order": 1,
-      "created_at": "2026-02-27T01:51:41.973375+00:00"
+      "created_at": "2026-02-27T09:51:41.973375+08:00"
     },
     {
       "id": 2,
@@ -68,7 +68,7 @@
       "icon": "fas fa-phone",
       "active": true,
       "sort_order": 2,
-      "created_at": "2026-02-27T01:51:41.973375+00:00"
+      "created_at": "2026-02-27T09:51:41.973375+08:00"
     },
     {
       "id": 3,
@@ -77,7 +77,7 @@
       "icon": "far fa-calendar",
       "active": true,
       "sort_order": 3,
-      "created_at": "2026-02-27T01:51:41.973375+00:00"
+      "created_at": "2026-02-27T09:51:41.973375+08:00"
     }
   ]
 }
