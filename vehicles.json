@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-13T04:31:45.516Z",
+  "updatedAt": "2026-11-13T06:45:24.595Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李大仁",
       "mobile": "0955888999",
-      "fixTime": "2026-11-13T12:27:35+08:00",
-      "latitude": 24.9432215,
-      "longitude": 121.3739682,
+      "fixTime": "2026-11-13T14:45:13+08:00",
+      "latitude": 25.0135839,
+      "longitude": 121.217494,
       "coordinateSystem": "wgs84",
-      "address": "新北市三峽區"
+      "address": "桃園市中壢區高鐵站前東路一段1號"
     },
     {
       "carPlate": "媽祖",
