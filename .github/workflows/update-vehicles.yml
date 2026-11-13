@@ -38,11 +38,30 @@ jobs:
           node -e "
           const fs = require('fs');
           const raw = JSON.parse(fs.readFileSync('vehicles-raw.json', 'utf8'));
+
+          // Render a Supabase timestamptz value as Taipei wall-clock ISO with
+          // explicit +08:00 offset. The instant is preserved; the raw string
+          // becomes human-readable in Taipei, matching Sheets and the viewer.
+          function taipeiISO(v) {
+            if (!v) return null;
+            const d = new Date(v);
+            if (isNaN(d.getTime())) return v;
+            const parts = new Intl.DateTimeFormat('sv-SE', {
+              timeZone: 'Asia/Taipei',
+              year: 'numeric', month: '2-digit', day: '2-digit',
+              hour: '2-digit', minute: '2-digit', second: '2-digit',
+              hour12: false
+            }).formatToParts(d);
+            const g = t => (parts.find(p => p.type === t) || {}).value || '';
+            return g('year') + '-' + g('month') + '-' + g('day') + 'T' +
+                   g('hour') + ':' + g('minute') + ':' + g('second') + '+08:00';
+          }
+
           const transformed = raw.map(v => ({
             carPlate: v.carplate,
             name: v.name,
             mobile: v.mobile,
-            fixTime: v.fixtime,
+            fixTime: taipeiISO(v.fixtime),
             latitude: v.latitude,
             longitude: v.longitude,
             coordinateSystem: v.coordinatesystem || 'wgs84',
