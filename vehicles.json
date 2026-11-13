@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T17:00:38.070Z",
+  "updatedAt": "2026-11-13T17:01:00.392Z",
   "count": 8,
   "data": [
     {
@@ -16,11 +16,11 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-11-14T00:58:55+08:00",
-      "latitude": 24.58480754489,
-      "longitude": 120.769400316812,
+      "fixTime": "2026-11-14T01:00:49+08:00",
+      "latitude": 24.571413,
+      "longitude": 120.709244,
       "coordinateSystem": "wgs84",
-      "address": "苗栗縣後龍鎮福爾摩沙高速公路"
+      "address": "苗栗縣通霄鎮8號"
     },
     {
       "carPlate": "拱天宮",
