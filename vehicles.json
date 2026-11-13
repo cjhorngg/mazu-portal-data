@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-11-13T01:53:30.203Z",
+  "updatedAt": "2026-11-13T02:31:45.478Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李大仁",
       "mobile": "0955888999",
-      "fixTime": "2026-11-13T17:40:12+00:00",
-      "latitude": 25.2669906582297,
-      "longitude": 121.548614468556,
+      "fixTime": "2026-11-13T10:31:32+00:00",
+      "latitude": 24.9435932,
+      "longitude": 121.3738796,
       "coordinateSystem": "wgs84",
       "address": "新北市石門區"
     },
