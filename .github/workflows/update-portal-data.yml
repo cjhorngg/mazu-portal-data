@@ -5,7 +5,6 @@ on:
     types: [supabase-change]
   workflow_dispatch:
   schedule:
-    # 作为兜底，每 6 小时运行一次
     - cron: '0 */6 * * *'
 
 jobs:
@@ -17,13 +16,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 必須：讓 tag action 能讀取完整的 tag 歷史
 
       - name: Fetch from Supabase
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          # 分别获取各表数据
           curl -s "$SUPABASE_URL/rest/v1/public_info?select=*&active=eq.true" \
             -H "apikey: $SUPABASE_ANON_KEY" \
             -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
@@ -64,16 +64,29 @@ jobs:
           "
 
       - name: Commit and push
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add portal-data.json
           if git diff --cached --quiet; then
             echo "No changes"
+            echo "changed=false" >> $GITHUB_OUTPUT
           else
             git commit -m "Update portal data"
             git push
+            echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Bump version and push tag
+        if: steps.commit.outputs.changed == 'true'
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_bump: patch
+          tag_prefix: v
+
       - name: Cleanup temp files
+        if: always()
         run: rm -f public_info.json events.json announcements.json quick_links.json
