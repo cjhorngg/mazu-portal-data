@@ -7,6 +7,10 @@ on:
   schedule:
     - cron: '0 */6 * * *'
 
+concurrency:
+  group: update-portal-data
+  cancel-in-progress: false
+
 jobs:
   update-json:
     runs-on: ubuntu-latest
@@ -17,49 +21,37 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # 必須：讓 tag action 能讀取完整的 tag 歷史
+          fetch-depth: 0
 
       - name: Fetch from Supabase
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          curl -s "$SUPABASE_URL/rest/v1/public_info?select=*&active=eq.true" \
-            -H "apikey: $SUPABASE_ANON_KEY" \
-            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
-            -o public_info.json
+          set -e
+          H=(-H "apikey: $SUPABASE_ANON_KEY" -H "Authorization: Bearer $SUPABASE_ANON_KEY")
 
-          curl -s "$SUPABASE_URL/rest/v1/events?select=*&active=eq.true&order=date" \
-            -H "apikey: $SUPABASE_ANON_KEY" \
-            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
-            -o events.json
-
-          curl -s "$SUPABASE_URL/rest/v1/announcements?select=*&active=eq.true&order=priority" \
-            -H "apikey: $SUPABASE_ANON_KEY" \
-            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
-            -o announcements.json
-
-          curl -s "$SUPABASE_URL/rest/v1/quick_links?select=*&active=eq.true&order=sort_order" \
-            -H "apikey: $SUPABASE_ANON_KEY" \
-            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
-            -o quick_links.json
+          curl -sS --fail "$SUPABASE_URL/rest/v1/public_info?select=*&active=eq.true" "${H[@]}" -o public_info.json || echo '[]' > public_info.json
+          curl -sS --fail "$SUPABASE_URL/rest/v1/events?select=*&active=eq.true&order=date" "${H[@]}" -o events.json || echo '[]' > events.json
+          curl -sS --fail "$SUPABASE_URL/rest/v1/announcements?select=*&active=eq.true&order=priority" "${H[@]}" -o announcements.json || echo '[]' > announcements.json
+          curl -sS --fail "$SUPABASE_URL/rest/v1/quick_links?select=*&active=eq.true&order=sort_order" "${H[@]}" -o quick_links.json || echo '[]' > quick_links.json
 
       - name: Merge into portal-data.json
         run: |
           node -e "
           const fs = require('fs');
-          const publicInfo = JSON.parse(fs.readFileSync('public_info.json', 'utf8'));
-          const events = JSON.parse(fs.readFileSync('events.json', 'utf8'));
-          const announcements = JSON.parse(fs.readFileSync('announcements.json', 'utf8'));
-          const quickLinks = JSON.parse(fs.readFileSync('quick_links.json', 'utf8'));
-
+          const read = f => {
+            try { const d = JSON.parse(fs.readFileSync(f, 'utf8')); return Array.isArray(d) ? d : []; }
+            catch { return []; }
+          };
+          const publicInfo = read('public_info.json');
+          const events = read('events.json');
+          const announcements = read('announcements.json');
+          const quickLinks = read('quick_links.json');
           const data = {
             announcement: publicInfo.find(i => i.section === 'main_announcement') || null,
-            events: events || [],
-            announcements: announcements || [],
-            quickLinks: quickLinks || []
+            events, announcements, quickLinks
           };
-
           fs.writeFileSync('portal-data.json', JSON.stringify(data, null, 2));
           "
 
@@ -86,6 +78,16 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: patch
           tag_prefix: ''
+
+      - name: Purge jsDelivr @latest
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          echo "Waiting for GitHub tag propagation..."
+          sleep 10
+          echo "Purging @latest..."
+          curl -s "https://purge.jsdelivr.net/gh/cjhorngg/mazu-portal-data@latest/portal-data.json" | tee purge-latest.json
+          echo ""
+          echo "Done."
 
       - name: Cleanup temp files
         if: always()
