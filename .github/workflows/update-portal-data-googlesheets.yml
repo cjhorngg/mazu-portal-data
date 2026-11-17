@@ -1,0 +1,98 @@
+name: Update Portal Data
+
+on:
+  repository_dispatch:
+    types: [sheets-change]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+concurrency:
+  group: mazu-portal-data-update
+  cancel-in-progress: false
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install googleapis
+        run: npm install googleapis
+
+      - name: Fetch from Google Sheets
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+        run: |
+          node -e "
+          const { google } = require('googleapis');
+          const fs = require('fs');
+
+          const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+          const auth = new google.auth.GoogleAuth({
+            credentials: creds,
+            scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
+          });
+
+          const sheets = google.sheets({ version: 'v4', auth });
+          const sheetId = process.env.SHEET_ID;
+
+          async function readSheet(name) {
+            const res = await sheets.spreadsheets.values.get({
+              spreadsheetId: sheetId,
+              range: name + '!A:Z'
+            });
+            const rows = res.data.values || [];
+            if (rows.length < 2) return [];
+            const headers = rows[0];
+            return rows.slice(1).map(row => {
+              const obj = {};
+              headers.forEach((h, i) => { obj[h] = row[i] || ''; });
+              return obj;
+            });
+          }
+
+          (async () => {
+            const publicInfo    = await readSheet('public_info');
+            const events        = await readSheet('events');
+            const announcements = await readSheet('announcements');
+            const quickLinks    = await readSheet('quick_links');
+
+            const data = {
+              announcement: publicInfo.find(i => i.section === 'main_announcement') || null,
+              events: events.filter(e => String(e.active).toUpperCase() === 'TRUE'),
+              announcements: announcements.filter(a => String(a.active).toUpperCase() === 'TRUE'),
+              quickLinks: quickLinks.filter(q => String(q.active).toUpperCase() === 'TRUE')
+            };
+
+            fs.writeFileSync('portal-data.json', JSON.stringify(data, null, 2));
+            console.log('Wrote portal-data.json');
+          })().catch(err => { console.error(err); process.exit(1); });
+          "
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add portal-data.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update portal data"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+      - name: Cleanup
+        if: always()
+        run: rm -rf node_modules package-lock.json
