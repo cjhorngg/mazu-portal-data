@@ -2,9 +2,10 @@
   "announcement": {
     "id": 4,
     "section": "main_announcement",
-    "content": "VIP 行李託運早鳥報名，開始了! #15",
+    "content": "VIP 行李託運早鳥報名，開始了! #16",
     "last_updated": "2026-04-13T00:00:00+08:00",
-    "active": true
+    "active": true,
+    "created_at": ""
   },
   "events": [
     {
@@ -15,7 +16,9 @@
       "location": "拱天宮文物大樓",
       "description": "行李託運報名",
       "active": true,
-      "map_url": "https://www.google.com/maps/place/%E7%99%BD%E6%B2%99%E5%B1%AF%E6%8B%B1%E5%A4%A9%E5%AE%AE%E9%A4%90%E5%BB%B3%E6%96%87%E7%89%A9%E5%A4%A7%E6%A8%93/@24.5716035,120.7086355,18z/data=!3m1!4b1!4m6!3m5!1s0x3469a61d21b05e15:0xbb2e5f793147d74f!8m2!3d24.5716035!4d120.7086355!16s%2Fg%2F11bttgkqbp?authuser=0&entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
+      "map_url": "https://www.google.com/maps/place/%E7%99%BD%E6%B2%99%E5%B1%AF%E6%8B%B1%E5%A4%A9%E5%AE%AE%E9%A4%90%E5%BB%B3%E6%96%87%E7%89%A9%E5%A4%A7%E6%A8%93/@24.5716035,120.7086355,18z/data=!3m1!4b1!4m6!3m5!1s0x3469a61d21b05e15:0xbb2e5f793147d74f!8m2!3d24.5716035!4d120.7086355!16s%2Fg%2F11bttgkqbp?authuser=0&entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D",
+      "created_at": "",
+      "updated_at": ""
     },
     {
       "id": 5,
@@ -25,7 +28,9 @@
       "location": "拱天宮第三停車場",
       "description": "北港進香行李報到",
       "active": true,
-      "map_url": "https://www.google.com/maps/search/?api=1&query=24.5730145,120.7113353"
+      "map_url": "https://www.google.com/maps/search/?api=1&query=24.5730145,120.7113353",
+      "created_at": "",
+      "updated_at": ""
     },
     {
       "id": 6,
@@ -35,7 +40,9 @@
       "location": "Main Street Cafe 2",
       "description": "Informal networking",
       "active": true,
-      "map_url": "https://www.google.com/maps/search/?api=1&query=45.4314220,-75.6685200"
+      "map_url": "https://www.google.com/maps/search/?api=1&query=45.4314220,-75.6685200",
+      "created_at": "",
+      "updated_at": ""
     }
   ],
   "announcements": [
@@ -44,39 +51,35 @@
       "message": "📢 4/6 ~ 開放報名狀態查詢，請點擊連結查詢",
       "priority": "medium",
       "expires": "2026-05-01",
-      "active": true
+      "active": true,
+      "created_at": ""
     },
     {
       "id": 5,
       "message": "💧 Water system maintenance March 19",
       "priority": "low",
       "expires": "2026-05-01",
-      "active": true
+      "active": true,
+      "created_at": ""
     },
     {
       "id": 6,
       "message": "📞 小藍帽每日12:00~14:00上線服務, 請留意關注!",
       "priority": "high",
       "expires": "2026-05-01",
-      "active": true
+      "active": true,
+      "created_at": ""
     }
   ],
   "quickLinks": [
-    {
-      "id": 1,
-      "label": "UPDATED LABEL",
-      "url": "https://updated.example.com",
-      "icon": "fas fa-star",
-      "active": true,
-      "sort_order": 1
-    },
     {
       "id": 4,
       "label": "Flyer's",
       "url": "https://line.me/R/ti/p/@602mbstj",
       "icon": "fab fa-line",
       "active": true,
-      "sort_order": 1
+      "sort_order": 1,
+      "created_at": ""
     },
     {
       "id": 5,
@@ -84,7 +87,8 @@
       "url": "https://love-mazu.netlify.app/web-call-center.html",
       "icon": "fas fa-phone",
       "active": true,
-      "sort_order": 2
+      "sort_order": 2,
+      "created_at": ""
     },
     {
       "id": 6,
@@ -92,7 +96,8 @@
       "url": "https://calendar.google.com",
       "icon": "far fa-calendar",
       "active": true,
-      "sort_order": 3
+      "sort_order": 3,
+      "created_at": ""
     }
   ]
 }
