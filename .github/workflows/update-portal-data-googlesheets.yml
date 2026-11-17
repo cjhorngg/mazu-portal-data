@@ -1,7 +1,7 @@
-name: Update Portal Data
+name: Update Portal Data Google Sheets
 
 on:
-  repository_dispatch:
+  repository_dispatch: 
     types: [sheets-change]
   workflow_dispatch:
   schedule:
@@ -88,7 +88,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "Update portal data"
+            git commit -m "Update Portal Data Google Sheets"
             git pull --rebase origin main
             git push origin main
           fi
