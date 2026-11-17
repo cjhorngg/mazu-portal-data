@@ -54,6 +54,20 @@ jobs:
           const sheets = google.sheets({ version: 'v4', auth });
           const sheetId = process.env.SHEET_ID;
 
+          const parseRow = (row) => {
+            const parsed = {};
+            for (const [k, v] of Object.entries(row)) {
+              if (k === 'id' || k === 'sort_order') {
+                parsed[k] = v !== '' && !isNaN(v) ? Number(v) : v;
+              } else if (k === 'active') {
+                parsed[k] = String(v).trim().toUpperCase() === 'TRUE';
+              } else {
+                parsed[k] = v;
+              }
+            }
+            return parsed;
+          };
+
           async function readSheet(name) {
             try {
               const res = await sheets.spreadsheets.values.get({
@@ -62,11 +76,11 @@ jobs:
               });
               const rows = res.data.values || [];
               if (rows.length < 2) return [];
-              const headers = rows[0];
+              const headers = rows[0].map(h => String(h).trim());
               return rows.slice(1).map(row => {
                 const obj = {};
                 headers.forEach((h, i) => { obj[h] = row[i] || ''; });
-                return obj;
+                return parseRow(obj);
               });
             } catch (err) {
               console.error('Failed to read sheet \"' + name + '\":', err.message);
@@ -81,14 +95,14 @@ jobs:
             const quickLinks    = await readSheet('quick_links');
 
             const data = {
-              announcement: publicInfo.find(i => i.section === 'main_announcement') || null,
-              events: events.filter(e => String(e.active).toUpperCase() === 'TRUE'),
-              announcements: announcements.filter(a => String(a.active).toUpperCase() === 'TRUE'),
-              quickLinks: quickLinks.filter(q => String(q.active).toUpperCase() === 'TRUE')
+              announcement: publicInfo.find(i => i.section === 'main_announcement' && i.active) || null,
+              events:        events.filter(e => e.active),
+              announcements: announcements.filter(a => a.active),
+              quickLinks:    quickLinks.filter(q => q.active)
             };
 
             fs.writeFileSync('portal-data-google.json', JSON.stringify(data, null, 2));
-            console.log('Wrote portal-data-google.json');
+            console.log('Wrote portal-data-google.json with exact schema match.');
           })().catch(err => { console.error(err); process.exit(1); });
           "
 
