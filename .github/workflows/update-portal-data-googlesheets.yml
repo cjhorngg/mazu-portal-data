@@ -1,7 +1,7 @@
 name: Update Portal Data Google Sheets
 
 on:
-  repository_dispatch: 
+  repository_dispatch:
     types: [sheets-change]
   workflow_dispatch:
   schedule:
@@ -26,6 +26,13 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: googleapis-${{ hashFiles('package-lock.json') }}
+          restore-keys: googleapis-
+
       - name: Install googleapis
         run: npm install googleapis
 
@@ -48,18 +55,23 @@ jobs:
           const sheetId = process.env.SHEET_ID;
 
           async function readSheet(name) {
-            const res = await sheets.spreadsheets.values.get({
-              spreadsheetId: sheetId,
-              range: name + '!A:Z'
-            });
-            const rows = res.data.values || [];
-            if (rows.length < 2) return [];
-            const headers = rows[0];
-            return rows.slice(1).map(row => {
-              const obj = {};
-              headers.forEach((h, i) => { obj[h] = row[i] || ''; });
-              return obj;
-            });
+            try {
+              const res = await sheets.spreadsheets.values.get({
+                spreadsheetId: sheetId,
+                range: name + '!A:Z'
+              });
+              const rows = res.data.values || [];
+              if (rows.length < 2) return [];
+              const headers = rows[0];
+              return rows.slice(1).map(row => {
+                const obj = {};
+                headers.forEach((h, i) => { obj[h] = row[i] || ''; });
+                return obj;
+              });
+            } catch (err) {
+              console.error('Failed to read sheet \"' + name + '\":', err.message);
+              return [];
+            }
           }
 
           (async () => {
