@@ -8,7 +8,7 @@ on:
     - cron: '0 */6 * * *'
 
 concurrency:
-  group: mazu-portal-data-update
+  group: mazu-portal-data-update-google
   cancel-in-progress: false
 
 jobs:
@@ -75,8 +75,8 @@ jobs:
               quickLinks: quickLinks.filter(q => String(q.active).toUpperCase() === 'TRUE')
             };
 
-            fs.writeFileSync('portal-data.json', JSON.stringify(data, null, 2));
-            console.log('Wrote portal-data.json');
+            fs.writeFileSync('portal-data-google.json', JSON.stringify(data, null, 2));
+            console.log('Wrote portal-data-google.json');
           })().catch(err => { console.error(err); process.exit(1); });
           "
 
@@ -84,7 +84,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add portal-data.json
+          git add portal-data-google.json
           if git diff --cached --quiet; then
             echo "No changes"
           else
