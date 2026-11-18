@@ -55,14 +55,6 @@
       "created_at": ""
     },
     {
-      "id": 5,
-      "message": "💧 Water system maintenance March 19",
-      "priority": "low",
-      "expires": "2026-05-01",
-      "active": true,
-      "created_at": ""
-    },
-    {
       "id": 6,
       "message": "📞 小藍帽每日12:00~14:00上線服務, 請留意關注!",
       "priority": "high",
