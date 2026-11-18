@@ -1,0 +1,86 @@
+{
+  "updatedAt": "2026-11-18T03:07:37.756Z",
+  "count": 8,
+  "data": [
+    {
+      "carPlate": "ZenLife",
+      "name": "李大仁",
+      "mobile": "0955888999",
+      "fixTime": "2026-11-13T22:44:58+08:00",
+      "latitude": "25.0135839",
+      "longitude": "121.217494",
+      "coordinateSystem": "wgs84",
+      "address": "320台灣桃園市中壢區青埔里高鐵站前東路一段1號1 樓"
+    },
+    {
+      "carPlate": "行李車",
+      "name": "王大同",
+      "mobile": "0938777999",
+      "fixTime": "2026-11-13T07:07:39+08:00",
+      "latitude": "24.65927633",
+      "longitude": "120.9695435",
+      "coordinateSystem": "wgs84",
+      "address": "MX59+PR 台灣苗栗縣三灣鄉三灣村"
+    },
+    {
+      "carPlate": "拱天宮",
+      "name": "李文仁",
+      "mobile": "0955888999",
+      "fixTime": "2025-11-21T11:52:58+08:00",
+      "latitude": "24.956109",
+      "longitude": "121.366118",
+      "coordinateSystem": "wgs84",
+      "address": "239台灣新北市鶯歌區中正一路478號"
+    },
+    {
+      "carPlate": "救護站",
+      "name": "李文仁",
+      "mobile": "0955888999",
+      "fixTime": "2025-11-21T11:52:58+08:00",
+      "latitude": "24.956109",
+      "longitude": "121.366118",
+      "coordinateSystem": "wgs84",
+      "address": "239台灣新北市鶯歌區中正一路478號"
+    },
+    {
+      "carPlate": "救護車",
+      "name": "王大同",
+      "mobile": "0938777999",
+      "fixTime": "2025-11-08T01:24:27+08:00",
+      "latitude": "24.936448",
+      "longitude": "121.366118",
+      "coordinateSystem": "wgs84",
+      "address": "237011臺灣新北市中山路106巷16之2號"
+    },
+    {
+      "carPlate": "接駁車",
+      "name": "王大同",
+      "mobile": "0938777999",
+      "fixTime": "2025-11-08T01:24:27+08:00",
+      "latitude": "24.936448",
+      "longitude": "121.366118",
+      "coordinateSystem": "wgs84",
+      "address": "237011臺灣新北市中山路106巷16之2號"
+    },
+    {
+      "carPlate": "媽祖",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-11-17T22:36:43+08:00",
+      "latitude": "24.571413",
+      "longitude": "120.709244",
+      "coordinateSystem": "wgs84",
+      "address": "357台灣苗栗縣通霄鎮白東里拱天路8號"
+    },
+    {
+      "carPlate": "頭旗",
+      "name": "GPS",
+      "mobile": "0912345678",
+      "fixTime": "2026-10-15T11:20:19+08:00",
+      "latitude": "25.051593",
+      "longitude": "121.287416",
+      "coordinateSystem": "wgs84",
+      "address": "338台灣桃園市蘆竹區錦中里南崁路一段129號"
+    }
+  ]
+}
