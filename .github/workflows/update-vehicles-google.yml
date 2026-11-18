@@ -1,0 +1,129 @@
+name: Update Vehicles Data Google Sheets
+
+on:
+  repository_dispatch:
+    types: [vehicles-google-change]
+  workflow_dispatch:
+
+concurrency:
+  group: update-vehicles-data-google
+  cancel-in-progress: true
+
+jobs:
+  update-vehicles-google:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: googleapis-${{ hashFiles('package-lock.json') }}
+          restore-keys: googleapis-
+
+      - name: Install googleapis
+        run: npm install googleapis
+
+      - name: Fetch vehicles from Google Sheets
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+        run: |
+          node -e "
+          const { google } = require('googleapis');
+          const fs = require('fs');
+
+          const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+          const auth = new google.auth.GoogleAuth({
+            credentials: creds,
+            scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
+          });
+
+          const sheets = google.sheets({ version: 'v4', auth });
+          const sheetId = process.env.SHEET_ID;
+
+          // 與 Supabase 版相同的 Taipei ISO 轉換
+          function taipeiISO(v) {
+            if (!v) return null;
+            const d = new Date(v);
+            if (isNaN(d.getTime())) return v;
+            const parts = new Intl.DateTimeFormat('sv-SE', {
+              timeZone: 'Asia/Taipei',
+              year: 'numeric', month: '2-digit', day: '2-digit',
+              hour: '2-digit', minute: '2-digit', second: '2-digit',
+              hour12: false
+            }).formatToParts(d);
+            const g = t => (parts.find(p => p.type === t) || {}).value || '';
+            return g('year') + '-' + g('month') + '-' + g('day') + 'T' +
+                   g('hour') + ':' + g('minute') + ':' + g('second') + '+08:00';
+          }
+
+          async function readSheet(name) {
+            const res = await sheets.spreadsheets.values.get({
+              spreadsheetId: sheetId,
+              range: name + '!A:Z'
+            });
+            const rows = res.data.values || [];
+            if (rows.length < 2) return [];
+            const headers = rows[0];
+            return rows.slice(1).map(row => {
+              const obj = {};
+              headers.forEach((h, i) => { obj[h] = row[i] || ''; });
+              return obj;
+            });
+          }
+
+          (async () => {
+            const raw = await readSheet('vehicles');
+
+            // 轉換成與 Supabase 版相同的格式
+            const transformed = raw.map(v => ({
+              carPlate: v.carplate,
+              name: v.name,
+              mobile: v.mobile,
+              fixTime: taipeiISO(v.fixtime),
+              latitude: v.latitude,
+              longitude: v.longitude,
+              coordinateSystem: v.coordinatesystem || 'wgs84',
+              address: v.address
+            }));
+
+            const output = {
+              updatedAt: new Date().toISOString(),
+              count: transformed.length,
+              data: transformed
+            };
+
+            fs.writeFileSync('vehicles-google.json', JSON.stringify(output, null, 2));
+            console.log('Wrote vehicles-google.json with', transformed.length, 'vehicles');
+          })().catch(err => { console.error(err); process.exit(1); });
+          "
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add vehicles-google.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update vehicles google data"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+      - name: Cleanup
+        if: always()
+        run: rm -rf node_modules package-lock.json
