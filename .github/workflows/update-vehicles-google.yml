@@ -5,6 +5,7 @@ on:
     types: [vehicles-google-change]
   workflow_dispatch:
 
+# 與 Supabase 版使用不同的 concurrency group，兩者可並行
 concurrency:
   group: update-vehicles-data-google
   cancel-in-progress: true
@@ -40,6 +41,7 @@ jobs:
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SHEET_ID: ${{ secrets.SHEET_ID_VEHICLES }}
+          SHEET_NAME: fleet
         run: |
           node -e "
           const { google } = require('googleapis');
@@ -53,8 +55,8 @@ jobs:
 
           const sheets = google.sheets({ version: 'v4', auth });
           const sheetId = process.env.SHEET_ID;
+          const sheetName = process.env.SHEET_NAME || 'fleet';
 
-          // 與 Supabase 版相同的 Taipei ISO 轉換
           function taipeiISO(v) {
             if (!v) return null;
             const d = new Date(v);
@@ -86,18 +88,17 @@ jobs:
           }
 
           (async () => {
-            const raw = await readSheet('vehicles');
+            const raw = await readSheet(sheetName);
 
-            // 轉換成與 Supabase 版相同的格式
             const transformed = raw.map(v => ({
-              carPlate: v.carplate,
-              name: v.name,
-              mobile: v.mobile,
-              fixTime: taipeiISO(v.fixtime),
-              latitude: v.latitude,
-              longitude: v.longitude,
+              carPlate: v.carplate || v.carPlate || '',
+              name: v.name || '',
+              mobile: v.mobile || '',
+              fixTime: taipeiISO(v.fixtime || v.fixTime),
+              latitude: v.latitude || '',
+              longitude: v.longitude || '',
               coordinateSystem: v.coordinatesystem || 'wgs84',
-              address: v.address
+              address: v.address || ''
             }));
 
             const output = {
@@ -107,7 +108,7 @@ jobs:
             };
 
             fs.writeFileSync('vehicles-google.json', JSON.stringify(output, null, 2));
-            console.log('Wrote vehicles-google.json with', transformed.length, 'vehicles');
+            console.log('Wrote vehicles-google.json with', transformed.length, 'vehicles from sheet:', sheetName);
           })().catch(err => { console.error(err); process.exit(1); });
           "
 
@@ -118,11 +119,11 @@ jobs:
           git add vehicles-google.json
           if git diff --cached --quiet; then
             echo "No changes"
-          else
-            git commit -m "Update vehicles google data"
-            git pull --rebase origin main
-            git push origin main
+            exit 0
           fi
+          git commit -m "Update vehicles google data"
+          git pull --rebase origin main
+          git push origin main
 
       - name: Cleanup
         if: always()
