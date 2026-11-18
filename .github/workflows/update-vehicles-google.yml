@@ -39,7 +39,7 @@ jobs:
       - name: Fetch vehicles from Google Sheets
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-          SHEET_ID: ${{ secrets.SHEET_ID }}
+          SHEET_ID: ${{ secrets.SHEET_ID_VEHICLES }}
         run: |
           node -e "
           const { google } = require('googleapis');
