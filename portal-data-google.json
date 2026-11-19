@@ -9,18 +9,6 @@
   },
   "events": [
     {
-      "id": 1,
-      "title": "行李託運報名",
-      "date": "2026-03-11",
-      "time": "09:00 - 12:00",
-      "location": "行政大樓 2F",
-      "description": "Help plant spring vegetables",
-      "active": true,
-      "map_url": "https://maps.app.goole/8rKpfCpiQ1uEfKjx6?g_st=ac8%93/@24.5716035,120.7086355,18z/data=!3m1!4b1!4m6!3m5!1s0x3469a61d21b05e15:https://maps.app.goo.gl/n9aRuGzg3Ersy1hh9?g_st=ac!8m2!3d24.5716035!4d120.7086355!16s%2Fg%2F11bttgkqbp?authuser=0&entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D",
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
       "id": 4,
       "title": "行李託運報名",
       "date": "2026-04-24",
