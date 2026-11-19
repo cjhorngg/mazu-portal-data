@@ -1,6 +1,6 @@
 {
   "announcement": {
-    "id": 4,
+    "id": 1,
     "section": "main_announcement",
     "content": "VIP 行李託運早鳥報名，開始了! #19",
     "last_updated": "2026-04-13T00:00:00+08:00",
@@ -9,7 +9,7 @@
   },
   "events": [
     {
-      "id": 4,
+      "id": 1,
       "title": "行李託運報名",
       "date": "2026-04-24",
       "time": "09:00 - 11:00",
@@ -21,33 +21,21 @@
       "updated_at": ""
     },
     {
-      "id": 5,
+      "id": 2,
       "title": "行李託運報到",
       "date": "2026-04-23",
-      "time": "06:30 下午",
+      "time": "09:00 - 11:00",
       "location": "拱天宮第三停車場",
       "description": "北港進香行李報到",
       "active": true,
       "map_url": "https://www.google.com/maps/search/?api=1&query=24.5730145,120.7113353",
       "created_at": "",
       "updated_at": ""
-    },
-    {
-      "id": 6,
-      "title": "Coffee Chat",
-      "date": "2026-04-13",
-      "time": "09:00 上午",
-      "location": "Main Street Cafe 2",
-      "description": "Informal networking",
-      "active": true,
-      "map_url": "https://www.google.com/maps/search/?api=1&query=45.4314220,-75.6685200",
-      "created_at": "",
-      "updated_at": ""
     }
   ],
   "announcements": [
     {
-      "id": 4,
+      "id": 1,
       "message": "📢 4/6 ~ 開放報名狀態查詢，請點擊連結查詢",
       "priority": "medium",
       "expires": "2026-05-01",
@@ -55,8 +43,8 @@
       "created_at": ""
     },
     {
-      "id": 6,
-      "message": "📞 小藍帽每日12:00~14:00上線服務, 請留意關注!",
+      "id": 2,
+      "message": "📞 小藍帽每日12:00~14:00上線服務, 請關注!",
       "priority": "high",
       "expires": "2026-05-01",
       "active": true,
@@ -65,7 +53,7 @@
   ],
   "quickLinks": [
     {
-      "id": 4,
+      "id": 1,
       "label": "Flyer's",
       "url": "https://line.me/R/ti/p/@602mbstj",
       "icon": "fab fa-line",
@@ -74,7 +62,7 @@
       "created_at": ""
     },
     {
-      "id": 5,
+      "id": 2,
       "label": "小藍帽",
       "url": "https://line.me/ti/g2/SReXqV2biLiOYrrfQ0BkRlADapipg6FhGy3qhw",
       "icon": "fas fa-phone",
@@ -83,7 +71,7 @@
       "created_at": ""
     },
     {
-      "id": 6,
+      "id": 3,
       "label": "行事曆",
       "url": "https://calendar.google.com",
       "icon": "far fa-calendar",
