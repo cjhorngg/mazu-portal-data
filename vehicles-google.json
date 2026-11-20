@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-19T14:42:57.680Z",
+  "updatedAt": "2026-11-20T17:52:10.732Z",
   "count": 8,
   "data": [
     {
       "carPlate": "ZenLife",
       "name": "李欣潔",
       "mobile": "0955888999",
-      "fixTime": "2026-11-13T22:44:58+08:00",
-      "latitude": "25.0135839",
-      "longitude": "121.217494",
+      "fixTime": "2026-11-21T09:51:46+08:00",
+      "latitude": "25.05078353",
+      "longitude": "121.5543365",
       "coordinateSystem": "wgs84",
-      "address": "320台灣桃園市中壢區青埔里高鐵站前東路一段1號1 樓"
+      "address": "105台灣臺北市松山區美仁里寧安街60巷3號"
     },
     {
       "carPlate": "行李車",
@@ -46,11 +46,11 @@
       "carPlate": "救護車",
       "name": "王大同",
       "mobile": "0938777999",
-      "fixTime": "2025-11-08T01:24:27+08:00",
-      "latitude": "24.936448",
-      "longitude": "121.366118",
+      "fixTime": "2026-11-21T07:36:16+08:00",
+      "latitude": "24.95610181",
+      "longitude": "121.3737345",
       "coordinateSystem": "wgs84",
-      "address": "237011臺灣新北市中山路106巷16之2號"
+      "address": "238台灣新北市樹林區三鶯二橋三鶯二橋"
     },
     {
       "carPlate": "接駁車",
@@ -66,7 +66,7 @@
       "carPlate": "媽祖",
       "name": "GPS",
       "mobile": "0912345678",
-      "fixTime": "2026-11-19T21:57:22+08:00",
+      "fixTime": "2026-11-20T21:46:14+08:00",
       "latitude": "24.571413",
       "longitude": "120.709244",
       "coordinateSystem": "wgs84",
